@@ -15,47 +15,26 @@ def get_filters():
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
-    print('Hello! Let\'s explore some US bikeshare data!')
-    
-    # Continue looping until a valid city, month, and day are entered
-    while True:
-        # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-        city = input('Please enter the city name (New York City, Chicago, Washington): ').strip().lower()
-        
-        # Error check for city name
-        if city in CITY_DATA:
-            break
-        elif city == 'new york':
-            # People often confuse new york and new yoek city. "new york" will auto-correct to "new york city"
-            city = 'new york city'
-            break
-        else:
-            print('Invalid input for city name. Please select from New York City, Chicago or Washington.')
+    print('Hello! Let\'s explore some US bikeshare data together!')
 
-    # Continue looping until a valid month is entered
-    while True:
-        # get user input for month (all, january, february, ... , june)
-        month = input('Please enter the name of the month (January, February, ..., June), or type "all" for all months: ').strip().lower()
-        
-        # Error check for month
-        if month in ['all', 'january', 'february', 'march', 'april', 'may', 'june']:
-            break
-        else:
-            print('Invalid input for month. Please input a valid month or type "all" for all months.')
+    # Define valid options for user input as a dictionary
+    valid_options = {
+        'city': ['new york city', 'chicago', 'washington'],
+        'month': ['all', 'january', 'february', 'march', 'april', 'may', 'june'],
+        'day': ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+    }
 
-    # Continue looping until a valid day of the week is entered
-    while True:
-        # get user input for day of week (all, monday, tuesday, ... sunday)
-        day = input('Please enter the name of the day of the week (Monday, Tuesday, ..., Sunday), or type "all" for all days: ').strip().lower()
-        
-        # Error check for day of the week
-        if day in ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']:
-            break
-        else:
-            print('Invalid input for day of the week. Please input a valid day or type "all" for all days.')
+    # Prompt user for city, month, and day inputs
+    user_inputs = {}
+    for category, options in valid_options.items():
+        user_input = input(f'Please enter the {category} name ({", ".join(options)}): ').strip().lower()
+        while user_input not in options:
+            print(f'Invalid input for {category} name. Please choose from the provided options.')
+            user_input = input(f'Please enter the {category} name ({", ".join(options)}): ').strip().lower()
+        user_inputs[category] = user_input
 
-    print('-'*40)
-    return city, month, day
+    return user_inputs['city'], user_inputs['month'], user_inputs['day']
+
 
 
 def load_data(city, month, day):
