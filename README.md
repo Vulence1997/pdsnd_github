@@ -7,7 +7,7 @@ Project and README file creation date: 05/06/2024.
 Bikeshare Data Project
 
 ### Description
-The project aims to develop a useful tool for reviewing bikeshare data for New York City, Washington and Chicago.
+The project aims to develop a useful app for reviewing bikeshare data for New York City, Washington and Chicago.
 
 ### Files used
 bikeshare_2.py

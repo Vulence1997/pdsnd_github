@@ -26,7 +26,7 @@ def get_filters():
         if city in CITY_DATA:
             break
         elif city == 'new york':
-            # People often confuse new york and new yoek city. "new york" will auto-correct to "new york city"
+            # People often confuse new york and new york city. "new york" will auto-correct to "new york city"
             city = 'new york city'
             break
         else:
